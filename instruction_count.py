@@ -9,8 +9,8 @@ from pathlib import Path
 encoding = 'utf-8'
 
 
-proj= "/scratch/mwu/federation/builds/coreip_s76/"
-tmp1 =list(Path(proj).rglob('cosim.log.gz'))
+proj = "/scratch/mwu/federation/builds/coreip_s76/"
+tmp1 = list(Path(proj).rglob('cosim.log.gz'))
 
 
 
@@ -38,8 +38,8 @@ def get_inst_cmd_list(list1):
     return cmd_list
 
 def check_privilege(line):
-    n =len(line.split('(',1)[0].split())
-    if n==4:
+    n = len(line.split('(',1)[0].split())
+    if n == 4:
         return True
     else:
         return False
@@ -62,7 +62,7 @@ for cosimlog in tmp1:
             else:
                 unprivilege.append(line_str)
 
-        if debug_level ==1:
+        if debug_level == 1:
             print(f"=== privilege lines preview, Total {len(privilege)} lines ===")
             for i in privilege[0:5]: print(i)
             print(f"=== Unprivilege lines preview, Total {len(unprivilege)} lines ===")
@@ -76,7 +76,7 @@ for cosimlog in tmp1:
         unprivilege_inst_code_list = get_inst_code_list(unprivilege)
         unprivilege_inst_cmd_list = get_inst_cmd_list(unprivilege)
 
-        if debug_level ==1:
+        if debug_level == 1:
             print(f"=== unprivilege command preview ===")
             for i in unprivilege_inst_cmd_list[0:5]: print(i)
 
@@ -86,6 +86,4 @@ for cosimlog in tmp1:
         print(f">> There are {len(uniqe_inst_list)} unique instructions:")
         print(uniqe_inst_list)
         #print(len(uniqe_inst_list))
-
-        fp.close()
 
